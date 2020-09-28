@@ -6,24 +6,18 @@
 ##5: Heterozygosity
 ##6: Relatedness
 ##(X)7: Population stratification
-##This is the QC procedures
-##1: Missingness of SNPs and individuals
-##2: Sex discrepancy
-##3: Minor allele frequency (MAF)
-##4: Hardy–Weinberg equilibrium (HWE)
-##5: Heterozygosity
-##6: Relatedness
-##(X)7: Population stratification
-options(java.parameters = c("-Xmx28g", "-Xms2g"))
+options(java.parameters = c("-Xmx30g", "-Xms2g"))
 library(rJava)
 library(rTASSEL)
+startLogger(fullPath = NULL, fileName = NULL)
 ##  read in the genotype data
 
-tasGenoDF <- rTASSEL::readGenotypeTableFromPath(path = )
+tasGenoDF <- rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/all_gen2.vcf.gz")
+tasGenoDF <- rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006115.5_Chr28_K10nGen19_SCOREHWE_no294BadSm.vcf.gz")
 tasGenoDF
 
 # Analyze the phenotype data
-pheno_csv <- read.csv("/media/brandon/MoGa/Data/AIL_phenotypes20190827.csv",header = T)
+pheno_csv <- read.csv("/home/yiwen/nas/AIL_phenotypes20190827.csv",header = T)
 
 #generations <- unique(pheno_csv$GENERATION)
 #genrations_samplesize <- data.frame()
@@ -38,7 +32,7 @@ pheno_gen2 <-pheno_csv[pheno_csv$GENERATION==2,] ; rm(pheno_csv)
 pheno_gen2_notnull <- Filter(function(x)!all(is.na(x) || is.null(x) || x == ""), pheno_gen2); rm(pheno_gen2)
 pheno_gen2_picked <- pheno_gen2_notnull[c("ID","BW8","GLUCOM","SEX")] ; row.names(pheno_gen2_picked) <- pheno_gen2_picked$ID
 
-sample_w_geno <- read.csv(file = "/media/brandon/MoGa/Data/STITCH_imputed_genotypes_F1_to_F18/gen2_sample_id.txt",sep = "\n", header = F, col.names = "ID", stringsAsFactors = F); row.names(sample_w_geno) <- sample_w_geno$ID
+sample_w_geno <- read.csv(file = "/home/yiwen/RT-Chicken_GWAS/gen2_sample_id.txt",sep = "\n", header = F, col.names = "ID", stringsAsFactors = F); row.names(sample_w_geno) <- sample_w_geno$ID
 pheno_ordered <- pheno_gen2_picked[row.names(sample_w_geno),]
 #checking how many of the samples don't have record in the traits
 sum(sapply(pheno_ordered$GLUCOM, function(x) is.na(x) || is.null(x) || x == ""))
