@@ -1,5 +1,9 @@
+## 2020.09.25
+Had the meeting with group, decided that I shall work on dropbear with Rstudio Server and then I'll need to install rJava and rTASSEL on dropbear as well which is a bit porblematic without sudo previlige. I wrote a bash script so that Tilman or Yunzhou can run it with sudo for me.
+[script for installing rJava and rTASSEL](https://github.com/Lil-Gepi/RT-Chicken_GWAS/blob/master/install_rJava_rTASSEL.sh)
+
 ## 2020.09.28
-Drop bear finally got rJava and rTASSEL installed, the place where R expects to find various Java files wasn't updated when Tilman runned the commands last Friday and now it's solved by running the following line.<br>
+Dropbear finally got rJava and rTASSEL installed, the place where R expects to find various Java files wasn't updated when Tilman runned the commands last Friday and now it's solved by running the following line.<br>
 
     sudo R CMD javareconf JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
 
