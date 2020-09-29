@@ -1,0 +1,20 @@
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.data.FileLoadPlugin: time: Sep 28, 2020 15:21:33
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FileLoadPlugin Parameters
+format: Make Best Guess
+sortPositions: false
+keepDepth: false
+
+[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Start Loading File: /home/brandon/Downloads/RT-Chicken_GWAS/all_gen2.vcf.gz time: Sep 28, 2020 15:21:33
+[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - guessAtUnknowns: type: VCF
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - net.maizegenetics.analysis.data.FileLoadPlugin  Citation: Bradbury PJ, Zhang Z, Kroon DE, Casstevens TM, Ramdoss Y, Buckler ES. (2007) TASSEL: Software for association mapping of complex traits in diverse samples. Bioinformatics 23:2633-2635.
+[main] ERROR net.maizegenetics.dna.map.PositionListBuilder - validateOrdering: Position	Chr:NC_006088.5	Pos:3022	InsertionPos:0	Name:SNC_006088.5_3022	Variants:C/A	MAF:NaN	Ref:C and Position	Chr:NC_006106.5	Pos:10232600	InsertionPos:0	Name:SNC_006106.5_10232600	Variants:A/G	MAF:NaN	Ref:A out of order.
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+Usage:
+FileLoadPlugin <options>
+-format <Format> : Import file format [SqrMatrix, Sequence, Unknown, Fasta, Hapmap, HapmapLIX, Plink, Phenotype, ProjectionAlignment, ProjectPCsandRunModelSelection, Phylip_Seq, Phylip_Inter, Table, Serial, HapmapDiploid, Newick, VCF, HDF5, TOPM, HDF5Schema, Filter, NumericGenotype, TaxaList, PositionList, SqrMatrixRaw, SqrMatrixBin, GOBII, Depth, ReferenceProbability, Report, PlinkPhenotype, SqrMatrixDARwinDIS, Avro, Flapjack] (Default: Make Best Guess)
+-sortPositions <true | false> : Whether to sort genotype positions if that's possible. (Default: false)
+-keepDepth <true | false> : Whether to keep depth if that's possible. (Default: true)
+
+[main] ERROR net.maizegenetics.plugindef.AbstractPlugin - Problem loading file: /home/brandon/Downloads/RT-Chicken_GWAS/all_gen2.vcf.gz.
+  Error: BuilderFromVCF: Ordering incorrect. VCF file must be ordered by position. Please first use SortGenotypeFilePlugin to correctly order the file.
