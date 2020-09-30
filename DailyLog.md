@@ -16,3 +16,6 @@ Tried to load the gen2_allchr.vcf.gz into rTASSEL, however got the error message
         Error in .jcall("RJavaTools", "Ljava/lang/Object;", "invokeMethod", cl,  :
           java.lang.IllegalStateException: ImportUtils: read: nothing was loaded for: /home/yiwen/nas/all_gen2.vcf.gz
 Two options are in my head, one is to re-generate the vcf file that I concatenated from the 28 chrs' data, and maybe we can give .vcf format a try, to see if the proble is caused by the compression; the other chance is to switch to TASSEL and see if the problem is caused by rTASSEL, since the behavior of rJava is rather weird, this is quite possible the problem. 
+
+## 2020.09.30
+The error seems to be caused by the vcf file not sorted by the snps' position for some reason. After adding additional parameter as _sortPositions = T_ when loading the vcf, I am now waiting the result. Otherwise there's a plugin of TASSEL as _SortGenotypeFilePlugin_ . We can try use it after the failure of rTASSEL.
