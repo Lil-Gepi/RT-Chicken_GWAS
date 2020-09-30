@@ -1,19 +1,11 @@
-##This is the QC procedures
-##1: Missingness of SNPs and individuals
-##2: Sex discrepancy
-##3: Minor allele frequency (MAF)
-##4: Hardy–Weinberg equilibrium (HWE)
-##5: Heterozygosity
-##6: Relatedness
-##(X)7: Population stratification
-options(java.parameters = c("-Xmx30g", "-Xms2g"))
+options(java.parameters = c("-Xmx200g", "-Xms2g"))
 library(rJava)
 library(rTASSEL)
 startLogger(fullPath = NULL, fileName = NULL)
 ##  read in the genotype data
 
 tasGenoDF <- rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/all_gen2.vcf.gz")
-tasGenoDF <- rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006115.5_Chr28_K10nGen19_SCOREHWE_no294BadSm.vcf.gz")
+#tasGenoDF <- rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006115.5_Chr28_K10nGen19_SCOREHWE_no294BadSm.vcf.gz")
 tasGenoDF
 
 # Analyze the phenotype data
@@ -78,3 +70,8 @@ tasPhenoDF <- rTASSEL::readPhenotypeFromDataFrame(
 # Inspect new object
 tasPhenoDF
 
+tasGenoPheno <- rTASSEL::readGenotypePhenotype(
+  genoPathOrObj = tasGenoHMP,
+  phenoPathDFOrObj = tasPheno
+)
+tasGenoPheno
