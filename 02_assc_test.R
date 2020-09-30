@@ -6,3 +6,12 @@
 ##5: Heterozygosity
 ##6: Relatedness
 ##(X)7: Population stratification
+tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableSites(
+  tasObj = tasGenoPheno,
+  siteMinCount = 150,
+  siteMinAlleleFreq = 0.05,
+  siteMaxAlleleFreq = 1.0
+)
+tasGenoPhenoFilt
+
+tasGenoPheno
