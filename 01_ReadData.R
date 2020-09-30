@@ -55,7 +55,9 @@ tasPhenoDF
 
 tasGenoPheno <- rTASSEL::readGenotypePhenotype(
   genoPathOrObj = tasGenoDF,
-  phenoPathDFOrObj = tasPhenoDF
+  phenoPathDFOrObj = tasPhenoDF,
+  taxaID = "Taxon",
+  attributeTypes = NULL
 )
 
 tasGenoPheno
