@@ -1,20 +1,51 @@
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.data.FileLoadPlugin: time: Sep 28, 2020 15:21:33
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.data.FileLoadPlugin: time: Oct 1, 2020 13:57:48
 [main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
 FileLoadPlugin Parameters
 format: Make Best Guess
-sortPositions: false
+sortPositions: true
 keepDepth: false
 
-[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Start Loading File: /home/brandon/Downloads/RT-Chicken_GWAS/all_gen2.vcf.gz time: Sep 28, 2020 15:21:33
+[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Start Loading File: /home/yiwen/nas/chr_all_gen2.vcf time: Oct 1, 2020 13:57:48
 [main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - guessAtUnknowns: type: VCF
 [main] INFO net.maizegenetics.plugindef.AbstractPlugin - net.maizegenetics.analysis.data.FileLoadPlugin  Citation: Bradbury PJ, Zhang Z, Kroon DE, Casstevens TM, Ramdoss Y, Buckler ES. (2007) TASSEL: Software for association mapping of complex traits in diverse samples. Bioinformatics 23:2633-2635.
 [main] ERROR net.maizegenetics.dna.map.PositionListBuilder - validateOrdering: Position	Chr:NC_006088.5	Pos:3022	InsertionPos:0	Name:SNC_006088.5_3022	Variants:C/A	MAF:NaN	Ref:C and Position	Chr:NC_006106.5	Pos:10232600	InsertionPos:0	Name:SNC_006106.5_10232600	Variants:A/G	MAF:NaN	Ref:A out of order.
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
-Usage:
-FileLoadPlugin <options>
--format <Format> : Import file format [SqrMatrix, Sequence, Unknown, Fasta, Hapmap, HapmapLIX, Plink, Phenotype, ProjectionAlignment, ProjectPCsandRunModelSelection, Phylip_Seq, Phylip_Inter, Table, Serial, HapmapDiploid, Newick, VCF, HDF5, TOPM, HDF5Schema, Filter, NumericGenotype, TaxaList, PositionList, SqrMatrixRaw, SqrMatrixBin, GOBII, Depth, ReferenceProbability, Report, PlinkPhenotype, SqrMatrixDARwinDIS, Avro, Flapjack] (Default: Make Best Guess)
--sortPositions <true | false> : Whether to sort genotype positions if that's possible. (Default: false)
--keepDepth <true | false> : Whether to keep depth if that's possible. (Default: true)
+BuilderFromVCF data timing 1986.37s 
+[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Finished Loading File: /home/yiwen/nas/chr_all_gen2.vcf time: Oct 1, 2020 14:30:54
+Genotype Table Name: chr_all_gen2
+Number of Taxa: 834
+Number of Sites: 8185311
+Sites x Taxa: 6826549374
+Chromosomes...
+NC_006088.5: start site: 0 (3022) last site: 1722642 (197606656) total: 1722643
+NC_006089.5: start site: 1722643 (34680) last site: 2969668 (149679640) total: 1247026
+NC_006090.5: start site: 2969669 (228) last site: 3935178 (110833698) total: 965510
+NC_006091.5: start site: 3935179 (13224) last site: 4755447 (91307214) total: 820269
+NC_006092.5: start site: 4755448 (51843) last site: 5280451 (59804623) total: 525004
+NC_006093.5: start site: 5280452 (516127) last site: 5643054 (36367170) total: 362603
+NC_006094.5: start site: 5643055 (26978) last site: 5980161 (36736608) total: 337107
+NC_006095.5: start site: 5980162 (42643) last site: 6226833 (30211230) total: 246672
+NC_006096.5: start site: 6226834 (528876) last site: 6452776 (24140941) total: 225943
+NC_006097.5: start site: 6452777 (520256) last site: 6636259 (21090444) total: 183483
+NC_006098.5: start site: 6636260 (10048) last site: 6792239 (20199954) total: 155980
+NC_006099.5: start site: 6792240 (86620) last site: 6973301 (20373782) total: 181062
+NC_006100.5: start site: 6973302 (506946) last site: 7142186 (19137153) total: 168885
+NC_006101.5: start site: 7142187 (187) last site: 7296254 (16152248) total: 154068
+NC_006102.5: start site: 7296255 (2011) last site: 7393112 (13044706) total: 96858
+NC_006103.5: start site: 7393113 (500608) last site: 7399709 (2843910) total: 6597
+NC_006104.5: start site: 7399710 (520509) last site: 7494620 (10755372) total: 94911
+NC_006105.5: start site: 7494621 (3667) last site: 7597066 (11372843) total: 102446
+NC_006106.5: start site: 7597067 (867) last site: 7690572 (10232600) total: 93506
+NC_006107.5: start site: 7690573 (17626) last site: 7817750 (13895303) total: 127178
+NC_006108.5: start site: 7817751 (7717) last site: 7879243 (6818000) total: 61493
+NC_006109.5: start site: 7879244 (178) last site: 7901089 (5458690) total: 21846
+NC_006110.5: start site: 7901090 (178) last site: 7957024 (6147423) total: 55935
+NC_006111.5: start site: 7957025 (156) last site: 8021856 (6490816) total: 64832
+NC_006112.4: start site: 8021857 (3903) last site: 8043087 (3977135) total: 21231
+NC_006113.5: start site: 8043088 (5144) last site: 8095582 (5553047) total: 52495
+NC_006114.5: start site: 8095583 (65000) last site: 8142449 (8066765) total: 46867
+NC_006115.5: start site: 8142450 (56400) last site: 8185310 (5107481) total: 42861
 
-[main] ERROR net.maizegenetics.plugindef.AbstractPlugin - Problem loading file: /home/brandon/Downloads/RT-Chicken_GWAS/all_gen2.vcf.gz.
-  Error: BuilderFromVCF: Ordering incorrect. VCF file must be ordered by position. Please first use SortGenotypeFilePlugin to correctly order the file.
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.data.FileLoadPlugin: time: Oct 1, 2020 14:30:54
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
