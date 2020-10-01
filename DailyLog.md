@@ -19,3 +19,7 @@ Two options are in my head, one is to re-generate the vcf file that I concatenat
 
 ## 2020.09.30
 The error seems to be caused by the vcf file not sorted by the snps' position for some reason. After adding additional parameter as _sortPositions = T_ when loading the vcf, I am now waiting the result. Otherwise there's a plugin of TASSEL as _SortGenotypeFilePlugin_ . We can try use it after the failure of rTASSEL.
+
+## 2020.10.01
+It seems like the error previously encountered was indeed caused by bcftools concatenating the snps based on their chromosomes with an order as 1,10,11,12...19,2,20,...which is not understandable to Tassel. Very fortunately, rTASSEL has the option mentioned above when reading in the data.<br>
+Today I'm also aiming to filter out "bad" snps with low frequency  
