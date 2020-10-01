@@ -5,7 +5,7 @@ startLogger(fullPath = NULL, fileName = NULL)
 ##------------------------------------------------------------------------------
 ## Read in the genotype data
 tasGenoDF <-
-  rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf")
+  rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf", sortPositions = T)
 tasGenoDF
 
 ##------------------------------------------------------------------------------
