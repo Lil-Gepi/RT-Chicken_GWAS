@@ -49,3 +49,121 @@ NC_006115.5: start site: 8142450 (56400) last site: 8185310 (5107481) total: 428
 phenotype column added: BW8,data
 phenotype column added: GLUCOM,data
 phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 1, 2020 15:16:23
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterSiteBuilderPlugin Parameters
+filterName: Filter
+siteMinCount: 150
+siteMinAlleleFreq: 0.05
+siteMaxAlleleFreq: 1.0
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+removeMinorSNPStates: false
+removeSitesWithIndels: false
+siteRangeFilterType: NONE
+startSite: 0
+endSite: 0
+startChr: null
+startPos: null
+endChr: null
+endPos: null
+includeSites: true
+positionList: null
+siteNames: null
+bedFile: null
+chrPosFile: null
+
+Genotype Table Name: Datum_Filter
+Number of Taxa: 834
+Number of Sites: 6065612
+Sites x Taxa: 5058720408
+Chromosomes...
+NC_006088.5: start site: 0 (14090) last site: 1310321 (197589274) total: 1310322
+NC_006089.5: start site: 1310322 (372908) last site: 2223456 (149565756) total: 913135
+NC_006090.5: start site: 2223457 (42827) last site: 2945456 (110816334) total: 722000
+NC_006091.5: start site: 2945457 (60782) last site: 3535003 (91296180) total: 589547
+NC_006092.5: start site: 3535004 (58524) last site: 3923974 (59804581) total: 388971
+NC_006093.5: start site: 3923975 (516127) last site: 4187474 (36363170) total: 263500
+NC_006094.5: start site: 4187475 (28588) last site: 4446243 (36736608) total: 258769
+NC_006095.5: start site: 4446244 (437077) last site: 4615899 (30191998) total: 169656
+NC_006096.5: start site: 4615900 (528876) last site: 4774901 (24126036) total: 159002
+NC_006097.5: start site: 4774902 (520256) last site: 4913444 (20816532) total: 138543
+NC_006098.5: start site: 4913445 (606776) last site: 5030031 (20104445) total: 116587
+NC_006099.5: start site: 5030032 (455928) last site: 5169120 (20302916) total: 139089
+NC_006100.5: start site: 5169121 (606118) last site: 5290976 (18982223) total: 121856
+NC_006101.5: start site: 5290977 (162532) last site: 5407421 (16149819) total: 116445
+NC_006102.5: start site: 5407422 (2011) last site: 5479143 (12962403) total: 71722
+NC_006103.5: start site: 5479144 (500608) last site: 5482896 (2841668) total: 3753
+NC_006104.5: start site: 5482897 (520509) last site: 5553315 (10755342) total: 70419
+NC_006105.5: start site: 5553316 (12347) last site: 5630700 (11371100) total: 77385
+NC_006106.5: start site: 5630701 (35648) last site: 5704777 (10198424) total: 74077
+NC_006107.5: start site: 5704778 (48098) last site: 5799799 (13895303) total: 95022
+NC_006108.5: start site: 5799800 (133082) last site: 5845714 (6811399) total: 45915
+NC_006109.5: start site: 5845715 (1066) last site: 5861496 (5398222) total: 15782
+NC_006110.5: start site: 5861497 (118489) last site: 5903383 (6147423) total: 41887
+NC_006111.5: start site: 5903384 (872) last site: 5951982 (6383102) total: 48599
+NC_006112.4: start site: 5951983 (7110) last site: 5965450 (3972882) total: 13468
+NC_006113.5: start site: 5965451 (87965) last site: 6002390 (5505987) total: 36940
+NC_006114.5: start site: 6002391 (123195) last site: 6035898 (8031164) total: 33508
+NC_006115.5: start site: 6035899 (100666) last site: 6065611 (4912531) total: 29713
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 1, 2020 15:16:29
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 2, 2020 14:42:4
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterSiteBuilderPlugin Parameters
+filterName: Filter
+siteMinCount: 10
+siteMinAlleleFreq: 0.05
+siteMaxAlleleFreq: 1.0
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+removeMinorSNPStates: false
+removeSitesWithIndels: false
+siteRangeFilterType: NONE
+startSite: 0
+endSite: 0
+startChr: null
+startPos: null
+endChr: null
+endPos: null
+includeSites: true
+positionList: null
+siteNames: null
+bedFile: null
+chrPosFile: null
+
+Genotype Table Name: Datum_Filter
+Number of Taxa: 834
+Number of Sites: 6067934
+Sites x Taxa: 5060656956
+Chromosomes...
+NC_006088.5: start site: 0 (14090) last site: 1310889 (197606135) total: 1310890
+NC_006089.5: start site: 1310890 (372908) last site: 2224359 (149565756) total: 913470
+NC_006090.5: start site: 2224360 (42827) last site: 2946584 (110816334) total: 722225
+NC_006091.5: start site: 2946585 (60782) last site: 3536380 (91307214) total: 589796
+NC_006092.5: start site: 3536381 (58524) last site: 3925459 (59804581) total: 389079
+NC_006093.5: start site: 3925460 (516127) last site: 4189026 (36363170) total: 263567
+NC_006094.5: start site: 4189027 (28588) last site: 4447858 (36736608) total: 258832
+NC_006095.5: start site: 4447859 (437077) last site: 4617557 (30191998) total: 169699
+NC_006096.5: start site: 4617558 (528876) last site: 4776595 (24140918) total: 159038
+NC_006097.5: start site: 4776596 (520256) last site: 4915185 (20836582) total: 138590
+NC_006098.5: start site: 4915186 (606776) last site: 5031807 (20106721) total: 116622
+NC_006099.5: start site: 5031808 (396309) last site: 5170938 (20306554) total: 139131
+NC_006100.5: start site: 5170939 (606118) last site: 5292834 (18982223) total: 121896
+NC_006101.5: start site: 5292835 (161905) last site: 5409334 (16149819) total: 116500
+NC_006102.5: start site: 5409335 (2011) last site: 5481077 (12962403) total: 71743
+NC_006103.5: start site: 5481078 (500608) last site: 5484889 (2841668) total: 3812
+NC_006104.5: start site: 5484890 (520509) last site: 5555329 (10755342) total: 70440
+NC_006105.5: start site: 5555330 (12347) last site: 5632755 (11371100) total: 77426
+NC_006106.5: start site: 5632756 (35648) last site: 5706843 (10198424) total: 74088
+NC_006107.5: start site: 5706844 (48098) last site: 5801893 (13895303) total: 95050
+NC_006108.5: start site: 5801894 (39208) last site: 5847828 (6811399) total: 45935
+NC_006109.5: start site: 5847829 (1066) last site: 5863619 (5398222) total: 15791
+NC_006110.5: start site: 5863620 (118489) last site: 5905524 (6147423) total: 41905
+NC_006111.5: start site: 5905525 (872) last site: 5954141 (6383102) total: 48617
+NC_006112.4: start site: 5954142 (7110) last site: 5967644 (3972882) total: 13503
+NC_006113.5: start site: 5967645 (22527) last site: 6004601 (5505987) total: 36957
+NC_006114.5: start site: 6004602 (123195) last site: 6038190 (8031164) total: 33589
+NC_006115.5: start site: 6038191 (100666) last site: 6067933 (4912531) total: 29743
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 2, 2020 14:42:8

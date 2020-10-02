@@ -7,11 +7,11 @@
 ##6: Relatedness
 ##(X)7: Population stratification
 tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableSites(
+  siteRangeFilterType = "none",
   tasObj = tasGenoPheno,
-  siteMinCount = 150,
+  siteMinCount = 10,
   siteMinAlleleFreq = 0.05,
   siteMaxAlleleFreq = 1.0
 )
 tasGenoPhenoFilt
-
 tasGenoPheno
