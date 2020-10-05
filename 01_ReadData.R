@@ -96,4 +96,4 @@ tasGenoPheno <- rTASSEL::readGenotypePhenotype(
 )
 # Let's take a look at this boiiiiii!
 tasGenoPheno
-save(tasGenoPheno, file = "/home/yiwen/RT-Chicken_GWAS/GenoPheno.RData")
+#save(tasGenoPheno, file = "/home/yiwen/RT-Chicken_GWAS/GenoPheno.RData")

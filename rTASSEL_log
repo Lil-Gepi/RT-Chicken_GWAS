@@ -1,16 +1,15 @@
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.data.FileLoadPlugin: time: Oct 1, 2020 13:57:48
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.data.FileLoadPlugin: time: Oct 5, 2020 14:18:1
 [main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
 FileLoadPlugin Parameters
 format: Make Best Guess
 sortPositions: true
 keepDepth: false
 
-[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Start Loading File: /home/yiwen/nas/chr_all_gen2.vcf time: Oct 1, 2020 13:57:48
+[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Start Loading File: /home/yiwen/nas/chr_all_gen2.vcf time: Oct 5, 2020 14:18:1
 [main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - guessAtUnknowns: type: VCF
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - net.maizegenetics.analysis.data.FileLoadPlugin  Citation: Bradbury PJ, Zhang Z, Kroon DE, Casstevens TM, Ramdoss Y, Buckler ES. (2007) TASSEL: Software for association mapping of complex traits in diverse samples. Bioinformatics 23:2633-2635.
 [main] ERROR net.maizegenetics.dna.map.PositionListBuilder - validateOrdering: Position	Chr:NC_006088.5	Pos:3022	InsertionPos:0	Name:SNC_006088.5_3022	Variants:C/A	MAF:NaN	Ref:C and Position	Chr:NC_006106.5	Pos:10232600	InsertionPos:0	Name:SNC_006106.5_10232600	Variants:A/G	MAF:NaN	Ref:A out of order.
-BuilderFromVCF data timing 1986.37s 
-[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Finished Loading File: /home/yiwen/nas/chr_all_gen2.vcf time: Oct 1, 2020 14:30:54
+BuilderFromVCF data timing 2063.97s 
+[main] INFO net.maizegenetics.analysis.data.FileLoadPlugin - Finished Loading File: /home/yiwen/nas/chr_all_gen2.vcf time: Oct 5, 2020 14:52:25
 Genotype Table Name: chr_all_gen2
 Number of Taxa: 834
 Number of Sites: 8185311
@@ -45,16 +44,16 @@ NC_006113.5: start site: 8043088 (5144) last site: 8095582 (5553047) total: 5249
 NC_006114.5: start site: 8095583 (65000) last site: 8142449 (8066765) total: 46867
 NC_006115.5: start site: 8142450 (56400) last site: 8185310 (5107481) total: 42861
 
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.data.FileLoadPlugin: time: Oct 1, 2020 14:30:54
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.data.FileLoadPlugin: time: Oct 5, 2020 14:52:25
 phenotype column added: BW8,data
 phenotype column added: GLUCOM,data
 phenotype column added: SEX,factor
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 1, 2020 15:16:23
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 5, 2020 14:53:26
 [main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
 FilterSiteBuilderPlugin Parameters
 filterName: Filter
-siteMinCount: 150
-siteMinAlleleFreq: 0.05
+siteMinCount: 400
+siteMinAlleleFreq: 0.02
 siteMaxAlleleFreq: 1.0
 minHeterozygous: 0.0
 maxHeterozygous: 1.0
@@ -75,95 +74,557 @@ chrPosFile: null
 
 Genotype Table Name: Datum_Filter
 Number of Taxa: 834
-Number of Sites: 6065612
-Sites x Taxa: 5058720408
+Number of Sites: 6349259
+Sites x Taxa: 5295282006
 Chromosomes...
-NC_006088.5: start site: 0 (14090) last site: 1310321 (197589274) total: 1310322
-NC_006089.5: start site: 1310322 (372908) last site: 2223456 (149565756) total: 913135
-NC_006090.5: start site: 2223457 (42827) last site: 2945456 (110816334) total: 722000
-NC_006091.5: start site: 2945457 (60782) last site: 3535003 (91296180) total: 589547
-NC_006092.5: start site: 3535004 (58524) last site: 3923974 (59804581) total: 388971
-NC_006093.5: start site: 3923975 (516127) last site: 4187474 (36363170) total: 263500
-NC_006094.5: start site: 4187475 (28588) last site: 4446243 (36736608) total: 258769
-NC_006095.5: start site: 4446244 (437077) last site: 4615899 (30191998) total: 169656
-NC_006096.5: start site: 4615900 (528876) last site: 4774901 (24126036) total: 159002
-NC_006097.5: start site: 4774902 (520256) last site: 4913444 (20816532) total: 138543
-NC_006098.5: start site: 4913445 (606776) last site: 5030031 (20104445) total: 116587
-NC_006099.5: start site: 5030032 (455928) last site: 5169120 (20302916) total: 139089
-NC_006100.5: start site: 5169121 (606118) last site: 5290976 (18982223) total: 121856
-NC_006101.5: start site: 5290977 (162532) last site: 5407421 (16149819) total: 116445
-NC_006102.5: start site: 5407422 (2011) last site: 5479143 (12962403) total: 71722
-NC_006103.5: start site: 5479144 (500608) last site: 5482896 (2841668) total: 3753
-NC_006104.5: start site: 5482897 (520509) last site: 5553315 (10755342) total: 70419
-NC_006105.5: start site: 5553316 (12347) last site: 5630700 (11371100) total: 77385
-NC_006106.5: start site: 5630701 (35648) last site: 5704777 (10198424) total: 74077
-NC_006107.5: start site: 5704778 (48098) last site: 5799799 (13895303) total: 95022
-NC_006108.5: start site: 5799800 (133082) last site: 5845714 (6811399) total: 45915
-NC_006109.5: start site: 5845715 (1066) last site: 5861496 (5398222) total: 15782
-NC_006110.5: start site: 5861497 (118489) last site: 5903383 (6147423) total: 41887
-NC_006111.5: start site: 5903384 (872) last site: 5951982 (6383102) total: 48599
-NC_006112.4: start site: 5951983 (7110) last site: 5965450 (3972882) total: 13468
-NC_006113.5: start site: 5965451 (87965) last site: 6002390 (5505987) total: 36940
-NC_006114.5: start site: 6002391 (123195) last site: 6035898 (8031164) total: 33508
-NC_006115.5: start site: 6035899 (100666) last site: 6065611 (4912531) total: 29713
+NC_006088.5: start site: 0 (16872) last site: 1360498 (197606656) total: 1360499
+NC_006089.5: start site: 1360499 (40933) last site: 2311915 (149607246) total: 951417
+NC_006090.5: start site: 2311916 (44792) last site: 3064204 (110821709) total: 752289
+NC_006091.5: start site: 3064205 (52332) last site: 3690114 (91283042) total: 625910
+NC_006092.5: start site: 3690115 (58654) last site: 4103238 (59804581) total: 413124
+NC_006093.5: start site: 4103239 (516140) last site: 4380819 (36363170) total: 277581
+NC_006094.5: start site: 4380820 (28549) last site: 4647468 (36736608) total: 266649
+NC_006095.5: start site: 4647469 (264166) last site: 4830596 (30193759) total: 183128
+NC_006096.5: start site: 4830597 (528876) last site: 4996752 (24133510) total: 166156
+NC_006097.5: start site: 4996753 (520256) last site: 5139458 (20925182) total: 142706
+NC_006098.5: start site: 5139459 (606776) last site: 5262252 (20122191) total: 122794
+NC_006099.5: start site: 5262253 (110776) last site: 5404724 (20332325) total: 142472
+NC_006100.5: start site: 5404725 (602227) last site: 5536588 (19134094) total: 131864
+NC_006101.5: start site: 5536589 (3053) last site: 5659711 (16149819) total: 123123
+NC_006102.5: start site: 5659712 (2011) last site: 5735483 (13032232) total: 75772
+NC_006103.5: start site: 5735484 (613391) last site: 5739120 (2832591) total: 3637
+NC_006104.5: start site: 5739121 (520509) last site: 5812832 (10755342) total: 73712
+NC_006105.5: start site: 5812833 (12347) last site: 5894546 (11372368) total: 81714
+NC_006106.5: start site: 5894547 (35648) last site: 5971950 (10194274) total: 77404
+NC_006107.5: start site: 5971951 (48098) last site: 6069645 (13895303) total: 97695
+NC_006108.5: start site: 6069646 (249002) last site: 6116596 (6814160) total: 46951
+NC_006109.5: start site: 6116597 (18436) last site: 6133506 (5378352) total: 16910
+NC_006110.5: start site: 6133507 (8470) last site: 6177876 (6147423) total: 44370
+NC_006111.5: start site: 6177877 (872) last site: 6228988 (6483751) total: 51112
+NC_006112.4: start site: 6228989 (7110) last site: 6243262 (3972882) total: 14274
+NC_006113.5: start site: 6243263 (243699) last site: 6283648 (5505948) total: 40386
+NC_006114.5: start site: 6283649 (123195) last site: 6318599 (8036008) total: 34951
+NC_006115.5: start site: 6318600 (100666) last site: 6349258 (5087109) total: 30659
 
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 1, 2020 15:16:29
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 2, 2020 14:42:4
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 5, 2020 14:53:32
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.distance.KinshipPlugin: time: Oct 5, 2020 15:01:11
 [main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
-FilterSiteBuilderPlugin Parameters
+KinshipPlugin Parameters
+method: Centered_IBS
+maxAlleles: 6
+algorithmVariation: Observed_Allele_Freq
+
+[main] INFO net.maizegenetics.analysis.distance.EndelmanDistanceMatrix - EndelmanDistanceMatrix: estimated time: 0 minutes
+[main] INFO net.maizegenetics.analysis.distance.EndelmanDistanceMatrix - EndelmanDistanceMatrix: actual time: 0 minutes
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.distance.KinshipPlugin: time: Oct 5, 2020 15:01:26
+[main] INFO net.maizegenetics.analysis.distance.IBSDistanceMatrix3Alleles - IBSDistanceMatrix3Alleles: computeHetBitDistances time = 40 seconds
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 15:09:1
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:09:1
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./BLUEs_site
+alleleFile: ./BLUEs_allele
+bluesFile: ./BLUEs_blues
+anovaFile: ./BLUEs_anova
+maxP: 0.01
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:09:1
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 15:09:1
+phenotype column added: BW8,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 15:10:30
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:10:30
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./BLUEs_site
+alleleFile: ./BLUEs_allele
+bluesFile: ./BLUEs_blues
+anovaFile: ./BLUEs_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:10:30
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 15:10:30
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 15:16:33
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:16:33
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./BLUEs_site
+alleleFile: ./BLUEs_allele
+bluesFile: ./BLUEs_blues
+anovaFile: ./BLUEs_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:16:33
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 15:16:33
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.distance.KinshipPlugin: time: Oct 5, 2020 15:18:47
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+KinshipPlugin Parameters
+method: Centered_IBS
+maxAlleles: 6
+algorithmVariation: Observed_Allele_Freq
+
+[main] INFO net.maizegenetics.analysis.distance.EndelmanDistanceMatrix - EndelmanDistanceMatrix: estimated time: 0 minutes
+[main] INFO net.maizegenetics.analysis.distance.EndelmanDistanceMatrix - EndelmanDistanceMatrix: actual time: 0 minutes
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.distance.KinshipPlugin: time: Oct 5, 2020 15:19:2
+[main] INFO net.maizegenetics.analysis.distance.IBSDistanceMatrix3Alleles - IBSDistanceMatrix3Alleles: computeHetBitDistances time = 26 seconds
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 15:23:16
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:23:16
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: false
+siteFile: null_site
+alleleFile: null_allele
+bluesFile: null_blues
+anovaFile: null_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:23:16
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 15:23:16
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 15:25:18
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:25:18
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: false
+siteFile: null_site
+alleleFile: null_allele
+bluesFile: null_blues
+anovaFile: null_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:25:18
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 15:25:18
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 15:27:10
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:27:10
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./GLM_site
+alleleFile: ./GLM_allele
+bluesFile: ./GLM_blues
+anovaFile: ./GLM_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 15:27:10
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 15:27:10
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 22:55:49
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 22:55:49
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: false
+siteFile: null_site
+alleleFile: null_allele
+bluesFile: null_blues
+anovaFile: null_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 22:55:49
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 22:55:49
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 22:57:35
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 22:57:35
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./GLM_site
+alleleFile: ./GLM_allele
+bluesFile: ./GLM_blues
+anovaFile: ./GLM_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 22:57:36
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 22:57:36
+phenotype column added: BW8,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 23:04:2
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 23:04:2
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./GLM_site
+alleleFile: ./GLM_allele
+bluesFile: ./GLM_blues
+anovaFile: ./GLM_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 23:04:3
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 23:04:3
+phenotype column added: BW8,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 23:04:31
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 23:04:31
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./GLM_site
+alleleFile: ./GLM_allele
+bluesFile: ./GLM_blues
+anovaFile: ./GLM_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 23:04:32
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 23:04:32
+phenotype column added: BW8,data
+phenotype column added: GLUCOM,data
+phenotype column added: SEX,factor
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Starting association: time: Oct 5, 2020 23:32:31
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - association: running GLM
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 23:32:31
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FixedEffectLMPlugin Parameters
+phenoOnly: true
+saveToFile: true
+siteFile: ./GLM_site
+alleleFile: ./GLM_allele
+bluesFile: ./GLM_blues
+anovaFile: ./GLM_anova
+maxP: 0.001
+permute: false
+nperm: 0
+genotypeComponent: Genotype
+minClassSize: 0
+biallelicOnly: false
+siteStatsOut: false
+siteStatFile: null
+appendAddDom: false
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.association.FixedEffectLMPlugin: time: Oct 5, 2020 23:32:32
+[main] INFO net.maizegenetics.plugindef.GenerateRCode - Finished association: time: Oct 5, 2020 23:32:32
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:43:41
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
 filterName: Filter
-siteMinCount: 10
-siteMinAlleleFreq: 0.05
-siteMaxAlleleFreq: 1.0
+minNotMissing: 1.0
 minHeterozygous: 0.0
 maxHeterozygous: 1.0
-removeMinorSNPStates: false
-removeSitesWithIndels: false
-siteRangeFilterType: NONE
-startSite: 0
-endSite: 0
-startChr: null
-startPos: null
-endChr: null
-endPos: null
-includeSites: true
-positionList: null
-siteNames: null
-bedFile: null
-chrPosFile: null
+includeTaxa: true
+taxaList: null
+
+[main] WARN net.maizegenetics.gui.DialogUtils - No genotype data remained after filtering: Datum
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:43:44
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:44:1
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
+filterName: Filter
+minNotMissing: 0.0
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+includeTaxa: true
+taxaList: null
+
+[main] WARN net.maizegenetics.gui.DialogUtils - Genotype data unchanged after filtering: Datum
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:44:1
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:46:30
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
+filterName: Filter
+minNotMissing: 0.1
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+includeTaxa: true
+taxaList: null
+
+[main] WARN net.maizegenetics.gui.DialogUtils - Genotype data unchanged after filtering: Datum
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:46:30
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:46:45
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
+filterName: Filter
+minNotMissing: 0.5
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+includeTaxa: true
+taxaList: null
 
 Genotype Table Name: Datum_Filter
-Number of Taxa: 834
-Number of Sites: 6067934
-Sites x Taxa: 5060656956
+Number of Taxa: 833
+Number of Sites: 6349259
+Sites x Taxa: 5288932747
 Chromosomes...
-NC_006088.5: start site: 0 (14090) last site: 1310889 (197606135) total: 1310890
-NC_006089.5: start site: 1310890 (372908) last site: 2224359 (149565756) total: 913470
-NC_006090.5: start site: 2224360 (42827) last site: 2946584 (110816334) total: 722225
-NC_006091.5: start site: 2946585 (60782) last site: 3536380 (91307214) total: 589796
-NC_006092.5: start site: 3536381 (58524) last site: 3925459 (59804581) total: 389079
-NC_006093.5: start site: 3925460 (516127) last site: 4189026 (36363170) total: 263567
-NC_006094.5: start site: 4189027 (28588) last site: 4447858 (36736608) total: 258832
-NC_006095.5: start site: 4447859 (437077) last site: 4617557 (30191998) total: 169699
-NC_006096.5: start site: 4617558 (528876) last site: 4776595 (24140918) total: 159038
-NC_006097.5: start site: 4776596 (520256) last site: 4915185 (20836582) total: 138590
-NC_006098.5: start site: 4915186 (606776) last site: 5031807 (20106721) total: 116622
-NC_006099.5: start site: 5031808 (396309) last site: 5170938 (20306554) total: 139131
-NC_006100.5: start site: 5170939 (606118) last site: 5292834 (18982223) total: 121896
-NC_006101.5: start site: 5292835 (161905) last site: 5409334 (16149819) total: 116500
-NC_006102.5: start site: 5409335 (2011) last site: 5481077 (12962403) total: 71743
-NC_006103.5: start site: 5481078 (500608) last site: 5484889 (2841668) total: 3812
-NC_006104.5: start site: 5484890 (520509) last site: 5555329 (10755342) total: 70440
-NC_006105.5: start site: 5555330 (12347) last site: 5632755 (11371100) total: 77426
-NC_006106.5: start site: 5632756 (35648) last site: 5706843 (10198424) total: 74088
-NC_006107.5: start site: 5706844 (48098) last site: 5801893 (13895303) total: 95050
-NC_006108.5: start site: 5801894 (39208) last site: 5847828 (6811399) total: 45935
-NC_006109.5: start site: 5847829 (1066) last site: 5863619 (5398222) total: 15791
-NC_006110.5: start site: 5863620 (118489) last site: 5905524 (6147423) total: 41905
-NC_006111.5: start site: 5905525 (872) last site: 5954141 (6383102) total: 48617
-NC_006112.4: start site: 5954142 (7110) last site: 5967644 (3972882) total: 13503
-NC_006113.5: start site: 5967645 (22527) last site: 6004601 (5505987) total: 36957
-NC_006114.5: start site: 6004602 (123195) last site: 6038190 (8031164) total: 33589
-NC_006115.5: start site: 6038191 (100666) last site: 6067933 (4912531) total: 29743
+NC_006088.5: start site: 0 (16872) last site: 1360498 (197606656) total: 1360499
+NC_006089.5: start site: 1360499 (40933) last site: 2311915 (149607246) total: 951417
+NC_006090.5: start site: 2311916 (44792) last site: 3064204 (110821709) total: 752289
+NC_006091.5: start site: 3064205 (52332) last site: 3690114 (91283042) total: 625910
+NC_006092.5: start site: 3690115 (58654) last site: 4103238 (59804581) total: 413124
+NC_006093.5: start site: 4103239 (516140) last site: 4380819 (36363170) total: 277581
+NC_006094.5: start site: 4380820 (28549) last site: 4647468 (36736608) total: 266649
+NC_006095.5: start site: 4647469 (264166) last site: 4830596 (30193759) total: 183128
+NC_006096.5: start site: 4830597 (528876) last site: 4996752 (24133510) total: 166156
+NC_006097.5: start site: 4996753 (520256) last site: 5139458 (20925182) total: 142706
+NC_006098.5: start site: 5139459 (606776) last site: 5262252 (20122191) total: 122794
+NC_006099.5: start site: 5262253 (110776) last site: 5404724 (20332325) total: 142472
+NC_006100.5: start site: 5404725 (602227) last site: 5536588 (19134094) total: 131864
+NC_006101.5: start site: 5536589 (3053) last site: 5659711 (16149819) total: 123123
+NC_006102.5: start site: 5659712 (2011) last site: 5735483 (13032232) total: 75772
+NC_006103.5: start site: 5735484 (613391) last site: 5739120 (2832591) total: 3637
+NC_006104.5: start site: 5739121 (520509) last site: 5812832 (10755342) total: 73712
+NC_006105.5: start site: 5812833 (12347) last site: 5894546 (11372368) total: 81714
+NC_006106.5: start site: 5894547 (35648) last site: 5971950 (10194274) total: 77404
+NC_006107.5: start site: 5971951 (48098) last site: 6069645 (13895303) total: 97695
+NC_006108.5: start site: 6069646 (249002) last site: 6116596 (6814160) total: 46951
+NC_006109.5: start site: 6116597 (18436) last site: 6133506 (5378352) total: 16910
+NC_006110.5: start site: 6133507 (8470) last site: 6177876 (6147423) total: 44370
+NC_006111.5: start site: 6177877 (872) last site: 6228988 (6483751) total: 51112
+NC_006112.4: start site: 6228989 (7110) last site: 6243262 (3972882) total: 14274
+NC_006113.5: start site: 6243263 (243699) last site: 6283648 (5505948) total: 40386
+NC_006114.5: start site: 6283649 (123195) last site: 6318599 (8036008) total: 34951
+NC_006115.5: start site: 6318600 (100666) last site: 6349258 (5087109) total: 30659
 
-[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterSiteBuilderPlugin: time: Oct 2, 2020 14:42:8
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:46:45
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:46:56
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
+filterName: Filter
+minNotMissing: 0.75
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+includeTaxa: true
+taxaList: null
+
+Genotype Table Name: Datum_Filter
+Number of Taxa: 831
+Number of Sites: 6349259
+Sites x Taxa: 5276234229
+Chromosomes...
+NC_006088.5: start site: 0 (16872) last site: 1360498 (197606656) total: 1360499
+NC_006089.5: start site: 1360499 (40933) last site: 2311915 (149607246) total: 951417
+NC_006090.5: start site: 2311916 (44792) last site: 3064204 (110821709) total: 752289
+NC_006091.5: start site: 3064205 (52332) last site: 3690114 (91283042) total: 625910
+NC_006092.5: start site: 3690115 (58654) last site: 4103238 (59804581) total: 413124
+NC_006093.5: start site: 4103239 (516140) last site: 4380819 (36363170) total: 277581
+NC_006094.5: start site: 4380820 (28549) last site: 4647468 (36736608) total: 266649
+NC_006095.5: start site: 4647469 (264166) last site: 4830596 (30193759) total: 183128
+NC_006096.5: start site: 4830597 (528876) last site: 4996752 (24133510) total: 166156
+NC_006097.5: start site: 4996753 (520256) last site: 5139458 (20925182) total: 142706
+NC_006098.5: start site: 5139459 (606776) last site: 5262252 (20122191) total: 122794
+NC_006099.5: start site: 5262253 (110776) last site: 5404724 (20332325) total: 142472
+NC_006100.5: start site: 5404725 (602227) last site: 5536588 (19134094) total: 131864
+NC_006101.5: start site: 5536589 (3053) last site: 5659711 (16149819) total: 123123
+NC_006102.5: start site: 5659712 (2011) last site: 5735483 (13032232) total: 75772
+NC_006103.5: start site: 5735484 (613391) last site: 5739120 (2832591) total: 3637
+NC_006104.5: start site: 5739121 (520509) last site: 5812832 (10755342) total: 73712
+NC_006105.5: start site: 5812833 (12347) last site: 5894546 (11372368) total: 81714
+NC_006106.5: start site: 5894547 (35648) last site: 5971950 (10194274) total: 77404
+NC_006107.5: start site: 5971951 (48098) last site: 6069645 (13895303) total: 97695
+NC_006108.5: start site: 6069646 (249002) last site: 6116596 (6814160) total: 46951
+NC_006109.5: start site: 6116597 (18436) last site: 6133506 (5378352) total: 16910
+NC_006110.5: start site: 6133507 (8470) last site: 6177876 (6147423) total: 44370
+NC_006111.5: start site: 6177877 (872) last site: 6228988 (6483751) total: 51112
+NC_006112.4: start site: 6228989 (7110) last site: 6243262 (3972882) total: 14274
+NC_006113.5: start site: 6243263 (243699) last site: 6283648 (5505948) total: 40386
+NC_006114.5: start site: 6283649 (123195) last site: 6318599 (8036008) total: 34951
+NC_006115.5: start site: 6318600 (100666) last site: 6349258 (5087109) total: 30659
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:46:58
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:47:48
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
+filterName: Filter
+minNotMissing: 0.9
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+includeTaxa: true
+taxaList: null
+
+Genotype Table Name: Datum_Filter
+Number of Taxa: 829
+Number of Sites: 6349259
+Sites x Taxa: 5263535711
+Chromosomes...
+NC_006088.5: start site: 0 (16872) last site: 1360498 (197606656) total: 1360499
+NC_006089.5: start site: 1360499 (40933) last site: 2311915 (149607246) total: 951417
+NC_006090.5: start site: 2311916 (44792) last site: 3064204 (110821709) total: 752289
+NC_006091.5: start site: 3064205 (52332) last site: 3690114 (91283042) total: 625910
+NC_006092.5: start site: 3690115 (58654) last site: 4103238 (59804581) total: 413124
+NC_006093.5: start site: 4103239 (516140) last site: 4380819 (36363170) total: 277581
+NC_006094.5: start site: 4380820 (28549) last site: 4647468 (36736608) total: 266649
+NC_006095.5: start site: 4647469 (264166) last site: 4830596 (30193759) total: 183128
+NC_006096.5: start site: 4830597 (528876) last site: 4996752 (24133510) total: 166156
+NC_006097.5: start site: 4996753 (520256) last site: 5139458 (20925182) total: 142706
+NC_006098.5: start site: 5139459 (606776) last site: 5262252 (20122191) total: 122794
+NC_006099.5: start site: 5262253 (110776) last site: 5404724 (20332325) total: 142472
+NC_006100.5: start site: 5404725 (602227) last site: 5536588 (19134094) total: 131864
+NC_006101.5: start site: 5536589 (3053) last site: 5659711 (16149819) total: 123123
+NC_006102.5: start site: 5659712 (2011) last site: 5735483 (13032232) total: 75772
+NC_006103.5: start site: 5735484 (613391) last site: 5739120 (2832591) total: 3637
+NC_006104.5: start site: 5739121 (520509) last site: 5812832 (10755342) total: 73712
+NC_006105.5: start site: 5812833 (12347) last site: 5894546 (11372368) total: 81714
+NC_006106.5: start site: 5894547 (35648) last site: 5971950 (10194274) total: 77404
+NC_006107.5: start site: 5971951 (48098) last site: 6069645 (13895303) total: 97695
+NC_006108.5: start site: 6069646 (249002) last site: 6116596 (6814160) total: 46951
+NC_006109.5: start site: 6116597 (18436) last site: 6133506 (5378352) total: 16910
+NC_006110.5: start site: 6133507 (8470) last site: 6177876 (6147423) total: 44370
+NC_006111.5: start site: 6177877 (872) last site: 6228988 (6483751) total: 51112
+NC_006112.4: start site: 6228989 (7110) last site: 6243262 (3972882) total: 14274
+NC_006113.5: start site: 6243263 (243699) last site: 6283648 (5505948) total: 40386
+NC_006114.5: start site: 6283649 (123195) last site: 6318599 (8036008) total: 34951
+NC_006115.5: start site: 6318600 (100666) last site: 6349258 (5087109) total: 30659
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:47:52
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Starting net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:50:57
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - 
+FilterTaxaBuilderPlugin Parameters
+filterName: Filter
+minNotMissing: 0.95
+minHeterozygous: 0.0
+maxHeterozygous: 1.0
+includeTaxa: true
+taxaList: null
+
+Genotype Table Name: Datum_Filter
+Number of Taxa: 826
+Number of Sites: 6349259
+Sites x Taxa: 5244487934
+Chromosomes...
+NC_006088.5: start site: 0 (16872) last site: 1360498 (197606656) total: 1360499
+NC_006089.5: start site: 1360499 (40933) last site: 2311915 (149607246) total: 951417
+NC_006090.5: start site: 2311916 (44792) last site: 3064204 (110821709) total: 752289
+NC_006091.5: start site: 3064205 (52332) last site: 3690114 (91283042) total: 625910
+NC_006092.5: start site: 3690115 (58654) last site: 4103238 (59804581) total: 413124
+NC_006093.5: start site: 4103239 (516140) last site: 4380819 (36363170) total: 277581
+NC_006094.5: start site: 4380820 (28549) last site: 4647468 (36736608) total: 266649
+NC_006095.5: start site: 4647469 (264166) last site: 4830596 (30193759) total: 183128
+NC_006096.5: start site: 4830597 (528876) last site: 4996752 (24133510) total: 166156
+NC_006097.5: start site: 4996753 (520256) last site: 5139458 (20925182) total: 142706
+NC_006098.5: start site: 5139459 (606776) last site: 5262252 (20122191) total: 122794
+NC_006099.5: start site: 5262253 (110776) last site: 5404724 (20332325) total: 142472
+NC_006100.5: start site: 5404725 (602227) last site: 5536588 (19134094) total: 131864
+NC_006101.5: start site: 5536589 (3053) last site: 5659711 (16149819) total: 123123
+NC_006102.5: start site: 5659712 (2011) last site: 5735483 (13032232) total: 75772
+NC_006103.5: start site: 5735484 (613391) last site: 5739120 (2832591) total: 3637
+NC_006104.5: start site: 5739121 (520509) last site: 5812832 (10755342) total: 73712
+NC_006105.5: start site: 5812833 (12347) last site: 5894546 (11372368) total: 81714
+NC_006106.5: start site: 5894547 (35648) last site: 5971950 (10194274) total: 77404
+NC_006107.5: start site: 5971951 (48098) last site: 6069645 (13895303) total: 97695
+NC_006108.5: start site: 6069646 (249002) last site: 6116596 (6814160) total: 46951
+NC_006109.5: start site: 6116597 (18436) last site: 6133506 (5378352) total: 16910
+NC_006110.5: start site: 6133507 (8470) last site: 6177876 (6147423) total: 44370
+NC_006111.5: start site: 6177877 (872) last site: 6228988 (6483751) total: 51112
+NC_006112.4: start site: 6228989 (7110) last site: 6243262 (3972882) total: 14274
+NC_006113.5: start site: 6243263 (243699) last site: 6283648 (5505948) total: 40386
+NC_006114.5: start site: 6283649 (123195) last site: 6318599 (8036008) total: 34951
+NC_006115.5: start site: 6318600 (100666) last site: 6349258 (5087109) total: 30659
+
+[main] INFO net.maizegenetics.plugindef.AbstractPlugin - Finished net.maizegenetics.analysis.filter.FilterTaxaBuilderPlugin: time: Oct 5, 2020 23:51:0
