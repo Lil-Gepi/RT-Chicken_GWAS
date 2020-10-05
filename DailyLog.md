@@ -23,3 +23,10 @@ The error seems to be caused by the vcf file not sorted by the snps' position fo
 ## 2020.10.01
 It seems like the error previously encountered was indeed caused by bcftools concatenating the snps based on their chromosomes with an order as 1,10,11,12...19,2,20,...which is not understandable to Tassel. Very fortunately, rTASSEL has the option mentioned above when reading in the data.<br>
 Today I'm also aiming to filter out "bad" snps with low frequency  
+
+## 2020.10.02
+When trying to extract genotype data from tasGenoPheno object, there's always an  error message:
+    
+    Error in .jcall("RJavaTools", "Ljava/lang/Object;", "invokeMethod", cl,  java.lang.NegativeArraySizeException: -1763385218
+Fixing thins, otherwise it might be caused by the size, we can see whathappens with the association test first.
+
