@@ -31,5 +31,5 @@ bcftools view -S /home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt -Oz -o /h
 bcftools view -S /home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt -Oz -o /home/yiwen/RT-Chicken_GWAS/chr26_gen2.vcf.gz  /home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006113.5_Chr26_K10nGen19_SCOREHWE_no294BadSm.vcf.gz
 bcftools view -S /home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt -Oz -o /home/yiwen/RT-Chicken_GWAS/chr27_gen2.vcf.gz  /home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006114.5_Chr27_K10nGen19_SCOREHWE_no294BadSm.vcf.gz 
 bcftools view -S /home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt -Oz -o /home/yiwen/RT-Chicken_GWAS/chr28_gen2.vcf.gz  /home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006115.5_Chr28_K10nGen19_SCOREHWE_no294BadSm.vcf.gz
-bcftools concat -Oz -o chr_all_gen2.vcf.gz /home/yiwen/RT-Chicken_GWAS/*.vcf.gz
-
+bcftools concat -Oz -o /home/yiwen/nas/chr_all_gen2.vcf.gz /home/yiwen/RT-Chicken_GWAS/*.vcf.gz
+rm /home/yiwen/RT-Chicken_GWAS/*.vcf.gz
