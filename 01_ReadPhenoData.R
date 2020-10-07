@@ -12,7 +12,7 @@ pheno_csv <-
 
 # Only keep the generation 2 data
 pheno_gen2 <- pheno_csv[pheno_csv$GENERATION == 2, ]
-#rm(pheno_csv)
+
 
 # Remove the empty columns
 pheno_gen2_notnull <-
@@ -50,7 +50,6 @@ pheno_noNA <-
                     is.na(pheno_ordered$GLUCOM)),]
 sum(is.na(pheno_ordered$BW8) & is.na(pheno_ordered$GLUCOM))
 sum(is.na(pheno_noNA$BW8) & is.na(pheno_noNA$GLUCOM))
-colnames(pheno_noNA) <- NULL
 passed_sample <- as.array(as.numeric(row.names(pheno_noNA)))
 write.table(
   x = passed_sample,
@@ -84,6 +83,7 @@ typeof(phenoDF$GLUCOM)
 typeof(phenoDF$SEX)
 summary(phenoDF)
 
+rm(pheno_csv, pheno_gen2, pheno_gen2_notnull, pheno_gen2_picked, sample_w_geno, passed_sample, pheno_noNA, pheno_ordered)
 ##[unnecessary]phenoDF <- phenoDF[!is.na(phenoDF$BW8), ]; phenoDF <- phenoDF[!is.na(phenoDF$GLUCOM), ]
 
 # Finally to read the phenotable into rTassel, execpt for the data itself, we also would like

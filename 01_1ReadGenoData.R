@@ -1,8 +1,11 @@
 
 ##------------------------------------------------------------------------------
 ## Read in the genotype data
+options(java.parameters = c("-Xmx200g", "-Xms2g"))
+library(rJava)
+library(rTASSEL)
 tasGenoDF <-
-  rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf", sortPositions = T)
+  rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf.gz", sortPositions = T)
 tasGenoDF
 
 
