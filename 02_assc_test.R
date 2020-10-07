@@ -22,48 +22,45 @@ tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableSites(
 tasGenoPhenoFilt
 tasGenoPheno
 
-tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableTaxa(
-  tasObj = tasGenoPhenoFilt,
-  minNotMissing = 0.95
-)
-tasGenoPhenoFilt
-tasGenoPheno
+# tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableTaxa(
+#   tasObj = tasGenoPhenoFilt,
+#   minNotMissing = 0.95
+# )
+# tasGenoPhenoFilt
+# tasGenoPheno
 
 # Create a kinship matrix object
 tasKin <- rTASSEL::kinshipMatrix(tasObj = tasGenoPhenoFilt)
 tasKinRMat <- rTASSEL::kinshipToRMatrix(tasKin)
 tasKinRMat[1:5, 1:5]
 
-# Calculate a distance matrix
-tasDist <- rTASSEL::distanceMatrix(tasObj = tasGenoPhenoFilt)
-tasDistRMat <- rTASSEL::distanceToRMatrix(tasDist)
-tasDistRMat[1:5, 1:5]
+# # Calculate a distance matrix
+# tasDist <- rTASSEL::distanceMatrix(tasObj = tasGenoPhenoFilt)
+# tasDistRMat <- rTASSEL::distanceToRMatrix(tasDist)
+# tasDistRMat[1:5, 1:5]
 
-# Calculate BLUEs
-tasBLUE <- rTASSEL::assocModelFitter(
-  tasObj = tasPhenoDF,
-  formula = list(BW8, GLUCOM) ~ .,                  # <- All data is used!
-  fitMarkers = FALSE,
-  kinship = NULL,
-  fastAssociation = FALSE,
-  maxP = 0.001
-)
-tasBLUE
+# # Calculate BLUEs
+# tasBLUE <- rTASSEL::assocModelFitter(
+#   tasObj = tasPhenoDF,
+#   formula = . ~ .,                  # <- All data is used!
+#   fitMarkers = FALSE,
+#   kinship = NULL,
+#   fastAssociation = FALSE
+# )
+# tasBLUE
 # Association test began
 # formula is 'list(BW8, GLUCOM) ~ location + SEX'
 
-# 1. GLM
-tasGLM <- rTASSEL::assocModelFitter(
-  tasObj = tasGenoPhenoFilt,           
-  formula = list(BW8, GLUCOM) ~ SEX, 
-  fitMarkers = TRUE,            
-  kinship = NULL,
-  fastAssociation = FALSE, 
-  maxP = 0.001, 
-  outputFile = "./GLM"
-)
-# Return GLM output
-tasGLM
+# # 1. GLM
+# tasGLM <- rTASSEL::assocModelFitter(
+#   tasObj = tasGenoPhenoFilt,           
+#   formula = . ~ ., 
+#   fitMarkers = TRUE,            
+#   kinship = NULL,
+#   fastAssociation = FALSE
+# )
+# # Return GLM output
+# tasGLM
 
 # 2. MLM
 tasMLM <- rTASSEL::assocModelFitter(
@@ -71,11 +68,8 @@ tasMLM <- rTASSEL::assocModelFitter(
   formula = . ~ .,               
   fitMarkers = TRUE, 
   kinship = tasKin,                  
-  fastAssociation = FALSE, 
-  maxP = 0.1, 
-  outputFile = "./MLM"
+  fastAssociation = FALSE
 )
 # Return MLM output
 tasMLM
-
-# 3. 
+save(tasMLM, file = '/home/yiwen/RT-Chicken_GWAS/tasMLM.RData')
