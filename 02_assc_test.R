@@ -11,7 +11,7 @@
 # )
 # 
 # tasSumExp
-
+load(file = './.RData')
 tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableSites(
   siteRangeFilterType = "none",
   tasObj = tasGenoPheno,
@@ -51,25 +51,25 @@ tasKinRMat[1:5, 1:5]
 # Association test began
 # formula is 'list(BW8, GLUCOM) ~ location + SEX'
 
-# # 1. GLM
-# tasGLM <- rTASSEL::assocModelFitter(
-#   tasObj = tasGenoPhenoFilt,           
-#   formula = . ~ ., 
-#   fitMarkers = TRUE,            
-#   kinship = NULL,
-#   fastAssociation = FALSE
-# )
-# # Return GLM output
-# tasGLM
-
-# 2. MLM
-tasMLM <- rTASSEL::assocModelFitter(
-  tasObj = tasGenoPhenoFilt,             
-  formula = . ~ .,               
-  fitMarkers = TRUE, 
-  kinship = tasKin,                  
+# 1. GLM
+tasGLM <- rTASSEL::assocModelFitter(
+  tasObj = tasGenoPhenoFilt,
+  formula = . ~ .,
+  fitMarkers = TRUE,
+  kinship = NULL,
   fastAssociation = FALSE
 )
-# Return MLM output
-tasMLM
-save(tasMLM, file = '/home/yiwen/RT-Chicken_GWAS/tasMLM.RData')
+# Return GLM output
+tasGLM
+save(tasGLM, file = '/home/yiwen/RT-Chicken_GWAS/tasGLM.RData')
+# # 2. MLM
+# tasMLM <- rTASSEL::assocModelFitter(
+#   tasObj = tasGenoPhenoFilt,             
+#   formula = . ~ .,               
+#   fitMarkers = TRUE, 
+#   kinship = tasKin,                  
+#   fastAssociation = FALSE
+# )
+# # Return MLM output
+# tasMLM
+# save(tasGLM, file = '/home/yiwen/RT-Chicken_GWAS/tasGLM.RData')

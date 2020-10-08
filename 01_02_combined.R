@@ -48,16 +48,16 @@ pheno_ordered[pheno_ordered == ""] <- NA
 pheno_noNA <-
   pheno_ordered[!(is.na(pheno_ordered$BW8) &
                     is.na(pheno_ordered$GLUCOM)),]
-# sum(is.na(pheno_ordered$BW8) & is.na(pheno_ordered$GLUCOM))
-# sum(is.na(pheno_noNA$BW8) & is.na(pheno_noNA$GLUCOM))
-# passed_sample <- as.array(as.numeric(row.names(pheno_noNA)))
-# write.table(
-#   x = passed_sample,
-#   row.names = F,
-#   col.names = F,
-#   sep = "\n",
-#   file = "/home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt"
-# )
+sum(is.na(pheno_ordered$BW8) & is.na(pheno_ordered$GLUCOM))
+sum(is.na(pheno_noNA$BW8) & is.na(pheno_noNA$GLUCOM))
+passed_sample <- as.array(as.numeric(row.names(pheno_noNA)))
+write.table(
+  x = passed_sample,
+  row.names = F,
+  col.names = F,
+  sep = "\n",
+  file = "/home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt"
+)
 # To tell rTassel what to expect, he first header should be "Taxon", with rest of them as is.
 phenoDF <- pheno_noNA
 colnames(phenoDF)[1] <- "Taxon"
@@ -96,4 +96,47 @@ tasPhenoDF <-
                                       attributeTypes = phenoAttribute)
 # As we can see, this tasPhenoDF is in a strange format, yet we want to combine the genoDF with phenoDF now.
 tasPhenoDF
-save(phenoDF, tasPhenoDF,phenoAttribute, file = "./Pheno.RData")
+
+##------------------------------------------------------------------------------
+## Read in the genotype data
+tasGenoDF <-
+  rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf", sortPositions = T)
+tasGenoDF
+
+##------------------------------------------------------------------------------
+
+# To combine, I chose to read from the two objects we have created, while the specification
+# used in creating tasPhenoDF needs to be passed to TASSEL again.
+tasGenoPheno <- rTASSEL::readGenotypePhenotype(
+  genoPathOrObj = tasGenoDF,
+  phenoPathDFOrObj = tasPhenoDF,
+  taxaID = "Taxon",
+  attributeTypes = phenoAttribute
+)
+# Let's take a look at this boiiiiii!
+tasGenoPheno
+#save(tasGenoPheno, file = "/home/yiwen/RT-Chicken_GWAS/GenoPheno.RData")
+
+
+tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableSites(
+  siteRangeFilterType = "none",
+  tasObj = tasGenoPheno,
+  siteMinCount = 400,
+  siteMinAlleleFreq = 0.02,
+  siteMaxAlleleFreq = 1.0
+)
+
+# Create a kinship matrix object
+tasKin <- rTASSEL::kinshipMatrix(tasObj = tasGenoPhenoFilt)
+
+# 2. MLM
+tasMLM <- rTASSEL::assocModelFitter(
+  tasObj = tasGenoPhenoFilt,             
+  formula = . ~ .,               
+  fitMarkers = TRUE, 
+  kinship = tasKin,                  
+  fastAssociation = FALSE
+)
+# Return MLM output
+tasMLM
+save(tasMLM, file = '/home/yiwen/RT-Chicken_GWAS/tasMLM.RData')

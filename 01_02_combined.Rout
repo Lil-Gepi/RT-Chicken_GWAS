@@ -1,0 +1,282 @@
+
+R version 3.6.3 (2020-02-29) -- "Holding the Windsock"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> options(java.parameters = c("-Xmx200g", "-Xms2g"))
+> library(rJava)
+> library(rTASSEL)
+Welcome to rTASSEL (version 0.9.17)
+ • Consider starting a TASSEL log file (see ?startLogger())
+
+> startLogger(fullPath = NULL, fileName = NULL)
+log4j:WARN No appenders could be found for logger (net.maizegenetics.util.LoggingUtils).
+log4j:WARN Please initialize the log4j system properly.
+TASSEL logging file created at: /home/yiwen/RT-Chicken_GWAS/rTASSEL_log
+> 
+> ##------------------------------------------------------------------------------
+> ## Read in the phenotype data
+> 
+> # Read the original csv table
+> pheno_csv <-
++   read.csv("/home/yiwen/nas/AIL_phenotypes20190827.csv", header = T)
+> 
+> # Only keep the generation 2 data
+> pheno_gen2 <- pheno_csv[pheno_csv$GENERATION == 2, ]
+> 
+> 
+> # Remove the empty columns
+> pheno_gen2_notnull <-
++   Filter(function(x)
++     ! all(is.na(x) ||
++             is.null(x) || x == ""), pheno_gen2)
+> #rm(pheno_gen2)
+> 
+> # Now we decide which trait are we interested in
+> pheno_gen2_picked <-
++   pheno_gen2_notnull[c("ID", "BW8", "GLUCOM", "SEX")]
+> row.names(pheno_gen2_picked) <-
++   pheno_gen2_picked$ID
+> #rm(pheno_gen2_notnull)
+> 
+> # Next we want to sort our pheno table by the same order of the sample id used in the geno vcf file
+> # 1. we read the sample ids in vcf file with order.
+> sample_w_geno <-
++   read.csv(
++     file = "/home/yiwen/RT-Chicken_GWAS/gen2_sample_id.txt",
++     sep = "\n",
++     header = F,
++     col.names = "ID",
++     stringsAsFactors = F
++   )
+> row.names(sample_w_geno) <- sample_w_geno$ID
+> # 2. we order the pheno table accordingly
+> pheno_ordered <- pheno_gen2_picked[row.names(sample_w_geno), ]
+> 
+> ## Very important part is following, we need to remove the samples without any data
+> ## of both traits.
+> pheno_ordered[pheno_ordered == ""] <- NA
+> pheno_noNA <-
++   pheno_ordered[!(is.na(pheno_ordered$BW8) &
++                     is.na(pheno_ordered$GLUCOM)),]
+> sum(is.na(pheno_ordered$BW8) & is.na(pheno_ordered$GLUCOM))
+[1] 47
+> sum(is.na(pheno_noNA$BW8) & is.na(pheno_noNA$GLUCOM))
+[1] 0
+> passed_sample <- as.array(as.numeric(row.names(pheno_noNA)))
+> write.table(
++   x = passed_sample,
++   row.names = F,
++   col.names = F,
++   sep = "\n",
++   file = "/home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt"
++ )
+> # To tell rTassel what to expect, he first header should be "Taxon", with rest of them as is.
+> phenoDF <- pheno_noNA
+> colnames(phenoDF)[1] <- "Taxon"
+> 
+> # Following will be steps correct the type pf the data we have.
+> 
+> # 1. the GLUCOM data is actually character type and the decimal point is comma in Swedish way
+> #    we would like to change that to a normal numeric column.
+> phenoDF$GLUCOM <- as.character(phenoDF$GLUCOM)
+> scan(text = phenoDF$GLUCOM,
++      dec = ",",
++      sep = ".")
+Read 787 items
+  [1]    NA 295.0 273.5 232.0 211.0 242.0    NA 233.0 208.5 251.5 239.0    NA
+ [13] 202.0 234.5 278.5 234.5    NA    NA 288.5 229.0 254.0 272.5 252.5 261.0
+ [25] 322.5 197.0 293.0 213.5 221.5 312.5 241.0 242.0 254.5 254.5 214.5 226.5
+ [37]    NA    NA 346.5 226.0 243.0 217.0    NA 237.0 225.0 255.5 234.5 557.0
+ [49] 269.5 241.5 258.5 239.5 246.5 247.0 235.0 322.5 220.0 293.0 248.5 236.0
+ [61] 227.0 202.5 300.0 262.0 250.5 246.5 242.0 241.0    NA 251.5 249.5 235.0
+ [73]    NA 215.0 285.5 272.0 245.0    NA 239.0 237.0 259.0 217.0 236.0    NA
+ [85] 225.5 243.5 235.5 273.5    NA 191.5 266.5 239.5 222.0 196.0 302.0 219.5
+ [97] 221.0 197.0 269.5 219.5 233.5 239.5 244.5 247.5 246.5 231.5 253.5    NA
+[109] 209.0 237.5 263.5 249.0 228.5 230.5 327.5 221.0 234.5 230.0 311.0 240.0
+[121] 216.0 248.0    NA 237.0 237.5 223.5 226.5 300.0 292.5    NA 226.0 213.5
+[133] 230.0 261.5 321.0 211.0 261.5 252.5 236.5 299.0 229.0    NA    NA 214.0
+[145] 231.5 196.5 231.0 258.5 266.5 282.5 229.0 261.5 214.0    NA 297.0 229.5
+[157] 243.5    NA 237.5 248.0 479.0 248.0 200.5 200.0 292.5 224.0 242.0 262.0
+[169] 338.0 237.5 216.5 229.5    NA 203.0 306.0 225.5 273.0    NA    NA 229.0
+[181]    NA 239.5    NA 224.5 231.0 249.5 204.0 250.0 261.5 224.5 251.0 247.0
+[193] 208.0 304.0 234.5 200.5 225.0 205.5 228.5 245.5 213.5 253.5 237.5 294.0
+[205]    NA 236.0 221.5    NA 201.5 235.5 266.0    NA 235.5 216.5    NA 272.5
+[217] 239.5    NA 305.5 234.5 226.5    NA    NA 297.5 198.5    NA 235.0 300.5
+[229] 224.0    NA 233.0    NA 299.0 259.0 234.0 269.0 272.5 235.0 225.5 221.5
+[241] 235.5    NA 219.0 186.0 226.5 232.0 266.5 302.0 297.0 297.0 250.5 235.0
+[253] 244.0 213.0 230.0 255.5    NA 203.0    NA 192.0 205.0 254.5 254.0 232.5
+[265] 212.0 232.0 207.5 229.0 206.5 259.0    NA 233.0 222.0 257.5 246.5 233.5
+[277] 244.5 267.5 289.5 221.0    NA    NA 260.0 263.0 229.0 266.5 311.5 231.5
+[289] 312.0 208.5 233.0    NA 213.0 246.5    NA 222.5 293.0 254.5 275.5 284.5
+[301] 236.5    NA 298.0 218.5    NA 217.0 235.0 240.0 259.5 267.0 288.0    NA
+[313] 230.5 212.5 220.0 254.5 223.0 220.5 247.0 206.5 224.0 159.0 264.0 316.5
+[325] 299.5 200.0 222.0 227.0 196.5 263.5 265.0 212.0 352.0 258.0 230.5 236.5
+[337] 297.5    NA 210.0    NA 257.0 215.0 215.5 236.0 242.5 237.0 218.5 235.0
+[349] 227.5 290.0 299.5 307.5 221.5    NA 231.0 253.0    NA 230.0 303.5 226.5
+[361] 233.5 245.0 265.0 269.0 268.5 224.0 213.0 260.0 236.5 276.0 258.5 261.0
+[373] 218.0 203.0 219.5 202.5 284.0 214.0 243.0 264.0 262.0 223.0    NA 207.5
+[385] 226.5 209.0 186.5 268.5    NA 243.5    NA 226.0 272.5 249.0 262.0 211.5
+[397] 239.0 252.0 228.5 199.5 240.0 233.5 226.5 263.0 258.0 153.0 250.5 227.5
+[409] 239.0    NA 232.5 276.0 267.0 301.5 203.0 247.0 245.5 234.0 225.0 335.0
+[421] 263.0 222.0 233.5 257.5 252.5 236.5 245.5 232.0 218.0    NA 233.0 228.0
+[433] 217.0 248.5 269.5 272.5 232.5    NA    NA 222.0 233.5 224.0    NA 230.5
+[445] 217.0 248.5 242.0 207.5 224.0 201.5 266.5 239.5 276.5 218.5 228.5 250.5
+[457] 232.5 253.0 226.0 225.5 233.5 260.0 207.5 223.5 220.5 240.0 263.0    NA
+[469] 235.5 220.5 237.5 233.0 290.0 246.0 263.0    NA 218.5 265.0 261.5 225.5
+[481] 346.0 225.0 283.0 240.5 265.5 216.5 226.0 311.0 291.5 234.5 246.0 246.5
+[493] 230.0 244.5    NA 187.5 220.0 312.5 236.5 230.5 223.5    NA 283.5 219.5
+[505] 203.5 229.5 245.5    NA 216.0 262.0 259.0 243.5 246.5 214.0 222.0 211.0
+[517] 212.0    NA 234.5    NA 185.5 267.5 207.5 208.5 196.5    NA 204.5 225.5
+[529]    NA 265.5 228.0    NA 279.0 228.0 230.5 257.0 251.5    NA 238.0 218.5
+[541]    NA 231.5 220.0 272.0 224.5 239.5 285.5 227.5    NA 241.0 283.5 193.5
+[553] 214.5 271.0 240.0 266.5 228.0    NA 409.0 200.5 254.0 234.0 295.0 315.5
+[565] 245.0    NA 264.5 216.5 225.5 241.0 231.5 243.5    NA 192.5 263.5 215.0
+[577] 219.0 230.5    NA 236.0 252.5 216.5 209.5 229.5    NA 236.5 148.0 208.5
+[589] 235.5 236.0 244.5 215.0 280.5 216.0 237.0 254.0    NA 248.0 252.0 177.0
+[601] 244.0 220.5 242.5    NA 246.0 246.5 195.0 221.0 320.5 265.5 349.5 282.5
+[613] 246.0    NA 217.0 194.0 252.5 238.5    NA 258.5 233.5 248.5 257.5 247.5
+[625] 244.5 246.5 243.5 238.0 283.5 244.0 238.0 214.5 206.5 242.5 238.5 235.0
+[637]    NA    NA 225.0 327.0 201.0 248.5    NA 210.0 414.5 292.0 250.0 223.0
+[649] 211.0    NA 238.5 220.5 216.0 232.5 235.5 235.5 218.0 258.5 324.0 208.5
+[661]    NA 207.5 247.5 205.5 233.5 212.0 196.0 227.5 237.0 222.5 291.0 218.0
+[673] 222.5 403.0 220.5 234.5    NA 214.5 205.5 204.0 232.0 221.5 277.5    NA
+[685] 250.0 202.5 212.0 240.5 262.5 183.5 226.0    NA 257.0 223.5 223.0 231.0
+[697] 213.0 253.5 270.5 186.0 334.0 264.0 252.0    NA 234.0 247.0 211.0 204.5
+[709] 240.0 233.5 240.0 239.0    NA 215.5    NA 223.5    NA    NA 235.0 234.5
+[721] 241.0 222.0 233.0 177.5    NA 236.5    NA 354.5 234.0 218.0 222.0 237.0
+[733] 224.5 257.5 270.5 241.0 239.0    NA 225.0    NA 266.0 220.0 230.0 213.5
+[745] 191.5 222.5 248.5 218.0    NA 265.0 285.0 226.5 220.0 276.0 243.5 286.0
+[757] 229.0 241.0 249.0 250.0 234.0 240.0 264.0 234.0 219.0 230.5 240.0 253.0
+[769] 359.0 212.5 244.0 236.0 262.5 220.0    NA    NA 285.5 352.5 222.0 329.0
+[781] 204.5 246.5    NA 191.0    NA 222.5 221.0
+> phenoDF$GLUCOM <- as.numeric(phenoDF$GLUCOM)
+Warning message:
+NAs introduced by coercion 
+> 
+> # 2. tomake sure the other columns are also in the right type of our desire.
+> phenoDF$SEX <- as.factor(phenoDF$SEX)
+> phenoDF$Taxon <- as.character(phenoDF$Taxon)
+> 
+> # 3. mic check mic check
+> typeof(phenoDF$Taxon)
+[1] "character"
+> typeof(phenoDF$BW8)
+[1] "double"
+> typeof(phenoDF$GLUCOM)
+[1] "double"
+> typeof(phenoDF$SEX)
+[1] "integer"
+> summary(phenoDF)
+    Taxon                BW8             GLUCOM      SEX    
+ Length:787         Min.   : 134.0   Min.   :148.0   1:378  
+ Class :character   1st Qu.: 523.0   1st Qu.:222.0   2:409  
+ Mode  :character   Median : 635.0   Median :236.0          
+                    Mean   : 630.8   Mean   :244.2          
+                    3rd Qu.: 750.0   3rd Qu.:258.5          
+                    Max.   :1179.0   Max.   :557.0          
+                    NA's   :2        NA's   :448            
+> 
+> rm(pheno_csv, pheno_gen2, pheno_gen2_notnull, pheno_gen2_picked, sample_w_geno, passed_sample, pheno_noNA, pheno_ordered)
+> ##[unnecessary]phenoDF <- phenoDF[!is.na(phenoDF$BW8), ]; phenoDF <- phenoDF[!is.na(phenoDF$GLUCOM), ]
+> 
+> # Finally to read the phenotable into rTassel, execpt for the data itself, we also would like
+> # to specify what kind of data each column is, so we'll need a vector to pass to attibuteTypes to do so.
+> phenoAttribute <- c("data", "data", "factor")
+> 
+> tasPhenoDF <-
++   rTASSEL::readPhenotypeFromDataFrame(phenotypeDF = phenoDF,
++                                       taxaID = "Taxon",
++                                       attributeTypes = phenoAttribute)
+> # As we can see, this tasPhenoDF is in a strange format, yet we want to combine the genoDF with phenoDF now.
+> tasPhenoDF
+A TasselGenotypePhenotype Dataset
+  Class.............. TasselGenotypePhenotype 
+  Taxa............... 787 
+  Positions.......... NA 
+  Taxa x Positions... NA 
+---
+  Genotype Table..... [ ]
+  Phenotype Table.... [x]
+---
+  Traits: Taxa BW8 GLUCOM SEX 
+> 
+> ##------------------------------------------------------------------------------
+> ## Read in the genotype data
+> tasGenoDF <-
++   rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf", sortPositions = T)
+> tasGenoDF
+A TasselGenotypePhenotype Dataset
+  Class.............. TasselGenotypePhenotype 
+  Taxa............... 787 
+  Positions.......... 8185311 
+  Taxa x Positions... 6441839757 
+---
+  Genotype Table..... [x]
+  Phenotype Table.... [ ]
+> 
+> ##------------------------------------------------------------------------------
+> 
+> # To combine, I chose to read from the two objects we have created, while the specification
+> # used in creating tasPhenoDF needs to be passed to TASSEL again.
+> tasGenoPheno <- rTASSEL::readGenotypePhenotype(
++   genoPathOrObj = tasGenoDF,
++   phenoPathDFOrObj = tasPhenoDF,
++   taxaID = "Taxon",
++   attributeTypes = phenoAttribute
++ )
+> # Let's take a look at this boiiiiii!
+> tasGenoPheno
+A TasselGenotypePhenotype Dataset
+  Class.............. TasselGenotypePhenotype 
+  Taxa............... 787 
+  Positions.......... 8185311 
+  Taxa x Positions... 6441839757 
+---
+  Genotype Table..... [x]
+  Phenotype Table.... [x]
+---
+  Traits: Taxa BW8 GLUCOM SEX 
+> #save(tasGenoPheno, file = "/home/yiwen/RT-Chicken_GWAS/GenoPheno.RData")
+> 
+> 
+> tasGenoPhenoFilt <- rTASSEL::filterGenotypeTableSites(
++   siteRangeFilterType = "none",
++   tasObj = tasGenoPheno,
++   siteMinCount = 400,
++   siteMinAlleleFreq = 0.02,
++   siteMaxAlleleFreq = 1.0
++ )
+> 
+> # Create a kinship matrix object
+> tasKin <- rTASSEL::kinshipMatrix(tasObj = tasGenoPhenoFilt)
+> 
+> # 2. MLM
+> tasMLM <- rTASSEL::assocModelFitter(
++   tasObj = tasGenoPhenoFilt,             
++   formula = . ~ .,               
++   fitMarkers = TRUE, 
++   kinship = tasKin,                  
++   fastAssociation = FALSE
++ )
+Running all traits...
+Association Analysis : MLM
+(NOTE) Factors detected - running initial BLUE calculation...
+(NOTE) BLUEs calculated - using output to test markers...
+Killed
