@@ -87,27 +87,3 @@ tasPhenoDF <-
                                       attributeTypes = phenoAttribute)
 # As we can see, this tasPhenoDF is in a strange format, yet we want to combine the genoDF with phenoDF now.
 tasPhenoDF
-
-##to get the chr_all_gen2.vcf, we need to use bcftools in bash
-
-
-
-
-tasGenoDF <-
-  rTASSEL::readGenotypeTableFromPath(path = "/home/yiwen/nas/chr_all_gen2.vcf", sortPositions = T)
-
-tasGenoDF
-
-
-##------------------------------------------------------------------------------
-
-# To combine, I chose to read from the two objects we have created, while the specification
-# used in creating tasPhenoDF needs to be passed to TASSEL again.
-tasGenoPheno <- rTASSEL::readGenotypePhenotype(
-  genoPathOrObj = tasGenoDF,
-  phenoPathDFOrObj = tasPhenoDF,
-  taxaID = "Taxon",
-  attributeTypes = phenoAttribute
-)
-# Let's take a look at this boiiiiii!
-tasGenoPheno
