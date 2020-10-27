@@ -1,6 +1,6 @@
 #!/bin/sh
-# get the id of all generation 2
 bcftools query -l /home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006115.5_Chr28_K10nGen19_SCOREHWE_no294BadSm.vcf.gz | grep 02$ > /home/yiwen/RT-Chicken_GWAS/gen2_sample_id.txt
+
 # -S means read the file with sample names. -Oz means compressed output. -o is the output file
 # take out the genotype data that are only from the sample id of our interest, thus shrinking the filesize. 
 bcftools view -S /home/yiwen/RT-Chicken_GWAS/gen2_sample_id_passed.txt -Oz -o /home/yiwen/RT-Chicken_GWAS/chr1_gen2.vcf.gz /home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006088.5_Chr1_K10nGen19_SCOREHWE_no294BadSm.vcf.gz

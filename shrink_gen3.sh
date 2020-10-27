@@ -1,4 +1,5 @@
 #!/bin/sh
+bcftools query -l /home/yiwen/nas/STITCH_imputed_genotypes_F1_to_F18/STITCH_NC_006115.5_Chr28_K10nGen19_SCOREHWE_no294BadSm.vcf.gz | grep 03$ > /home/yiwen/RT-Chicken_GWAS/gen3_sample_id_passed.txt
 
 # -S means read the file with sample names. -Oz means compressed output. -o is the output file
 # take out the genotype data that are only from the sample id of our interest, thus shrinking the filesize. 
